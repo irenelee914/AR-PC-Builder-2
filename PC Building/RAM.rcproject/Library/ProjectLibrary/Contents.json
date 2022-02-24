@@ -1,0 +1,57 @@
+[
+  {
+    "libraryIdentifier" : "717a30bed4848d3e47df6a059f8646df",
+    "format" : "image",
+    "displayName" : "IMG_9017.jpeg"
+  },
+  {
+    "libraryIdentifier" : "354d90070b87694fdfae3e5b635db0e1",
+    "format" : "model",
+    "displayName" : "Crucial_8_GB_DDR4_2133_RAM.usdz"
+  },
+  {
+    "libraryIdentifier" : "d103d98b2d83a180017070f11115c663",
+    "format" : "model",
+    "displayName" : "cpu_lever_animation.usdz"
+  },
+  {
+    "libraryIdentifier" : "1c6148cab70e0b900ed1bd5735bd7cf4",
+    "format" : "model",
+    "displayName" : "Intel_Processor_Core_i5-661.usdz"
+  },
+  {
+    "libraryIdentifier" : "d8f17062495ed7d1898ada8a8eeb06ae",
+    "format" : "image",
+    "displayName" : "IMG_6803.heic"
+  },
+  {
+    "libraryIdentifier" : "8e2971cdd0efa28073c875165940155f",
+    "format" : "image",
+    "displayName" : "IMG_6806.heic"
+  },
+  {
+    "libraryIdentifier" : "ea8081823ffaab6ff1a7507aadbc124a",
+    "format" : "image",
+    "displayName" : "IMG_6808.heic"
+  },
+  {
+    "libraryIdentifier" : "bda3e7d3eae5c8a907a2f6690e5b9fd8",
+    "format" : "image",
+    "displayName" : "IMG_6880.heic"
+  },
+  {
+    "libraryIdentifier" : "2f5f67275f66880f9e490dfa97195c75",
+    "format" : "image",
+    "displayName" : "IMG_6881.heic"
+  },
+  {
+    "libraryIdentifier" : "07baac9de904a2805915a0285f2b518d",
+    "format" : "model",
+    "displayName" : "cpu_fan.usdz"
+  },
+  {
+    "libraryIdentifier" : "116b1e715b51c96c64d2e30574391a2a",
+    "format" : "model",
+    "displayName" : "Random_access_memory_RAM_DDR3.usdz"
+  }
+]
