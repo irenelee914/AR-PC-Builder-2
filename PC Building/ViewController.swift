@@ -181,6 +181,93 @@ class ViewController: UIViewController, ARSessionDelegate {
             //notificationTrigger = anchor.notifications.stepRAM2
             statusViewController.showMessage("PLACE THE CPU INTO THE SOCKET")
         }
+        else if stateController.step == 5 {
+            
+        }
+        else if stateController.step == 6 {
+            
+        }
+        else if stateController.step == 7 {
+            
+        }
+        else if stateController.step == 8 {
+            
+        }
+        else if stateController.step == 9 {
+            
+        }
+        else if stateController.step == 10 {
+            
+        }
+        //STEP 4: Place Motherboard into Case
+        else if stateController.step == 11 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadPCCASEMOTHERBOARD()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place motherboard into case".uppercased())
+        }
+        //STEP 4.1: Screws into the 8 holes to secure motherboard
+        else if stateController.step == 12 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW1()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 1 into hole of motherboard".uppercased())
+        }
+        else if stateController.step == 13 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW2()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 2 into hole of motherboard".uppercased())
+        }
+        else if stateController.step == 14 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW3()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 3 into hole of motherboard".uppercased())
+        }
+        else if stateController.step == 15 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW4()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 4 into hole of motherboard".uppercased())
+        }
+        else if stateController.step == 16 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW5()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 5 into hole of motherboard".uppercased())
+        }
+        else if stateController.step == 17 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW6()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 6 into hole of motherboard".uppercased())
+        }
+        else if stateController.step == 18 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW7()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 7 into hole of motherboard".uppercased())
+        }
+        else if stateController.step == 19 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadMBSCREW8()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 8 into hole of motherboard".uppercased())
+        }
+        //STEP 5: Place Hard Drive into case until click
+        else if stateController.step == 20 {
+        }
+        
 }
 
     class StateController {
