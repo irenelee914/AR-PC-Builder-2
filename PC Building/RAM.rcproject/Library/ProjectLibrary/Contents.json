@@ -53,5 +53,25 @@
     "libraryIdentifier" : "116b1e715b51c96c64d2e30574391a2a",
     "format" : "model",
     "displayName" : "Random_access_memory_RAM_DDR3.usdz"
+  },
+  {
+    "libraryIdentifier" : "1abf4880cd428b09d2be19e85e83e701",
+    "format" : "image",
+    "displayName" : "PC_CASE.jpeg"
+  },
+  {
+    "libraryIdentifier" : "6c1a0d4297381b2dea9d509f188c65c6",
+    "format" : "model",
+    "displayName" : "motherboard_complete.usdz"
+  },
+  {
+    "libraryIdentifier" : "a5e6e4659fc8bd53e9b4ab6915b16b35",
+    "format" : "image",
+    "displayName" : "IMG_9745.jpeg"
+  },
+  {
+    "libraryIdentifier" : "75ba8651fd5747a65b9c65492191632a",
+    "format" : "model",
+    "displayName" : "Bolt_M10x25_Hexagon_Head.usdz"
   }
 ]
