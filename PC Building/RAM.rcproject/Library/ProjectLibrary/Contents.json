@@ -73,5 +73,25 @@
     "libraryIdentifier" : "75ba8651fd5747a65b9c65492191632a",
     "format" : "model",
     "displayName" : "Bolt_M10x25_Hexagon_Head.usdz"
+  },
+  {
+    "libraryIdentifier" : "92a4a7747fcf1be3b4900207a71d25d8",
+    "format" : "model",
+    "displayName" : "close_cpu_cover_animated.usdz"
+  },
+  {
+    "libraryIdentifier" : "a7209484f975a8f4431e15cd16e10d47",
+    "format" : "model",
+    "displayName" : "open_cpu_cover_animated.usdz"
+  },
+  {
+    "libraryIdentifier" : "82e296e217a21595011bd3c6b7a6b5fa",
+    "format" : "model",
+    "displayName" : "cpu_cover_object.usdz"
+  },
+  {
+    "libraryIdentifier" : "744d84cab45ef3067bfb74c0f4aa2146",
+    "format" : "model",
+    "displayName" : "thick_cpu_lever_object.usdz"
   }
 ]

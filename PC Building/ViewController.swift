@@ -149,12 +149,12 @@ class ViewController: UIViewController, ARSessionDelegate {
         // main menu, view when popup is showed
         if stateController.step == 0 {
         }
+        //STEP1: PLACE RAMS STICKS
         else if stateController.step == 1 {
             // --- show Buttons ---
             self.detectionOverlay.isHidden = true
             self.previousButton.isHidden = false
             self.nextButton.isHidden = false
-            
             statusViewController.showMessage("POINT CAMERA TOWARDS MOTHEROARD")
         }
         else if stateController.step == 2 {
@@ -167,40 +167,94 @@ class ViewController: UIViewController, ARSessionDelegate {
             statusViewController.showMessage("DEPRESS THE WHITE LEVERS")
         }
         else if stateController.step == 3 {
-            //step 2, insert RAM sticks
-            notificationTrigger.post()
-            statusViewController.showMessage("PLACE RAM STICKS IN UNTIL CLICK")
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadRAM2SHORTSIDE()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Locate the short side of the RAM".uppercased())
         }
-        //open cpu lever socket thing before this
         else if stateController.step == 4 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadRAM2ALIGNMENT()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Align the ram as shown (short side down)".uppercased())
+        }
+        else if stateController.step == 5 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadRAM2INSERT()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Insert the RAMs into the RAM slots".uppercased())
+        }
+        //STEP 2: PLACE CPU
+        else if stateController.step == 6 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUOPENCOVER()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Open the CPU Cover".uppercased())
+        }
+        else if stateController.step == 7 {
             //step 3, insert CPU
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadCPU()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
-            //notificationTrigger = anchor.notifications.stepRAM2
-            statusViewController.showMessage("PLACE THE CPU INTO THE SOCKET")
-        }
-        else if stateController.step == 5 {
-            
-        }
-        else if stateController.step == 6 {
-            
-        }
-        else if stateController.step == 7 {
-            
+            statusViewController.showMessage("Place the CPU into the Socket".uppercased())
         }
         else if stateController.step == 8 {
-            
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUCLOSECOVER()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Close the CPU Cover".uppercased())
         }
+        //STEP 3: PLACE CPU FAN
         else if stateController.step == 9 {
-            
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUFAN1ORIENTATION1()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("orient CPU FAN as shown".uppercased())
         }
         else if stateController.step == 10 {
-            
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUFAN()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place the CPU FAN over the CPU".uppercased())
+        }
+        else if stateController.step == 11 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUFANSCREW1()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 1 into hole of CPU FAN".uppercased())
+        }
+        else if stateController.step == 12 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUFANSCREW2()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 2 into hole of CPU FAN".uppercased())
+        }
+        else if stateController.step == 13 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUFANSCREW3()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 3 into hole of CPU FAN".uppercased())
+        }
+        else if stateController.step == 14 {
+            arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadCPUFANSCREW4()
+            anchor.generateCollisionShapes(recursive: true)
+            arView.scene.anchors.append(anchor)
+            statusViewController.showMessage("Place screw 4 into hole of CPU FAN".uppercased())
         }
         //STEP 4: Place Motherboard into Case
-        else if stateController.step == 11 {
+        else if stateController.step == 15 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadPCCASEMOTHERBOARD()
             anchor.generateCollisionShapes(recursive: true)
@@ -208,56 +262,56 @@ class ViewController: UIViewController, ARSessionDelegate {
             statusViewController.showMessage("Place motherboard into case".uppercased())
         }
         //STEP 4.1: Screws into the 8 holes to secure motherboard
-        else if stateController.step == 12 {
+        else if stateController.step == 16 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW1()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Place screw 1 into hole of motherboard".uppercased())
         }
-        else if stateController.step == 13 {
+        else if stateController.step == 17 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW2()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Place screw 2 into hole of motherboard".uppercased())
         }
-        else if stateController.step == 14 {
+        else if stateController.step == 18 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW3()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Place screw 3 into hole of motherboard".uppercased())
         }
-        else if stateController.step == 15 {
+        else if stateController.step == 19 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW4()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Place screw 4 into hole of motherboard".uppercased())
         }
-        else if stateController.step == 16 {
+        else if stateController.step == 20 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW5()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Place screw 5 into hole of motherboard".uppercased())
         }
-        else if stateController.step == 17 {
+        else if stateController.step == 21 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW6()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Place screw 6 into hole of motherboard".uppercased())
         }
-        else if stateController.step == 18 {
+        else if stateController.step == 22 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW7()
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Place screw 7 into hole of motherboard".uppercased())
         }
-        else if stateController.step == 19 {
+        else if stateController.step == 23 {
             arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW8()
             anchor.generateCollisionShapes(recursive: true)
@@ -265,7 +319,7 @@ class ViewController: UIViewController, ARSessionDelegate {
             statusViewController.showMessage("Place screw 8 into hole of motherboard".uppercased())
         }
         //STEP 5: Place Hard Drive into case until click
-        else if stateController.step == 20 {
+        else if stateController.step == 24 {
         }
         
 }
