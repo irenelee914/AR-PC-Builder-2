@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,23 +15,23 @@
             <objects>
                 <viewController id="agd-e8-sbn" customClass="InstructionsViewController" customModule="PC_Building" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JSo-xI-jmo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-il-D8a" userLabel="Message Panel">
-                                <rect key="frame" x="18" y="52.000000000000007" width="378" height="30.333333333333336"/>
+                                <rect key="frame" x="18" y="52.000000000000007" width="346" height="30.333333333333336"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OyT-QW-rlJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="378" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="346" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-0X-REd">
-                                            <rect key="frame" x="0.0" y="0.0" width="378" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="346" height="30.333333333333332"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8BA-Ae-Epm">
-                                                <rect key="frame" x="0.0" y="0.0" width="378" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="346" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIt-JV-75A">
-                                                        <rect key="frame" x="16" y="8" width="346" height="14.333333333333336"/>
+                                                        <rect key="frame" x="16" y="8" width="314" height="14.333333333333336"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <nil key="textColor"/>
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,23 +96,47 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="288-AQ-uCy">
-                                <rect key="frame" x="32" y="804" width="45.333333333333343" height="31"/>
+                                <rect key="frame" x="33.000000000000007" y="780" width="67.666666666666686" height="48.666666666666629"/>
                                 <state key="normal" title=""/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.left.circle" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.left.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="29" scale="large"/>
+                                    <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="prevButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dpp-2b-Q0Y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNq-ix-BkO">
-                                <rect key="frame" x="337.66666666666669" y="805" width="45.333333333333314" height="31"/>
+                                <rect key="frame" x="326" y="780" width="67.666666666666686" height="48.666666666666629"/>
                                 <state key="normal" title=""/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.right.circle" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.right.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="29" scale="large"/>
+                                    <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pUB-63-dj5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSP-ev-58H">
+                                <rect key="frame" x="342.33333333333331" y="123.00000000000001" width="71.666666666666686" height="48.666666666666671"/>
+                                <state key="normal" title="Button" backgroundImage="line.horizontal.3" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <imageReference key="image" image="magnifyingglass.circle.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                        <hierarchicalColors>
+                                            <color systemColor="systemBlueColor"/>
+                                            <color systemColor="secondaryLabelColor"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="29"/>
+                                    <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="menuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w68-EC-UgW"/>
+                                </connections>
+                            </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IT-PV-fyc" userLabel="Upper Controls View">
-                                <rect key="frame" x="0.0" y="64" width="414" height="40"/>
+                                <rect key="frame" x="16" y="64" width="382" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2EB-ov-kYh"/>
                                 </constraints>
@@ -119,19 +144,8 @@
                                     <segue destination="agd-e8-sbn" kind="embed" id="FfI-db-4Vq"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSP-ev-58H">
-                                <rect key="frame" x="354" y="112" width="50" height="31"/>
-                                <state key="normal" title="Button" backgroundImage="line.horizontal.3" catalog="system"/>
-                                <buttonConfiguration key="configuration" style="plain" image="line.horizontal.3" catalog="system" title=" ">
-                                    <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="menuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w68-EC-UgW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="586-HY-u3M">
-                                <rect key="frame" x="172" y="775" width="71" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="586-HY-u3M">
+                                <rect key="frame" x="178" y="793" width="71" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="VERIFY"/>
                                 <connections>
@@ -144,17 +158,20 @@
                         <constraints>
                             <constraint firstItem="Flg-nc-yDf" firstAttribute="top" secondItem="g6C-p8-8ru" secondAttribute="top" id="4H7-nD-4Dv"/>
                             <constraint firstAttribute="bottom" secondItem="Flg-nc-yDf" secondAttribute="bottom" id="4Uy-Tb-Jw2"/>
-                            <constraint firstItem="288-AQ-uCy" firstAttribute="leading" secondItem="caB-zI-q0l" secondAttribute="leading" constant="32" id="7Bz-RG-KRm"/>
+                            <constraint firstItem="caB-zI-q0l" firstAttribute="bottom" secondItem="586-HY-u3M" secondAttribute="bottom" constant="38" id="6yi-n7-E7T"/>
+                            <constraint firstItem="caB-zI-q0l" firstAttribute="bottom" secondItem="pNq-ix-BkO" secondAttribute="bottom" constant="33.329999999999998" id="Pi2-Kw-9eI"/>
                             <constraint firstItem="Flg-nc-yDf" firstAttribute="trailing" secondItem="caB-zI-q0l" secondAttribute="trailing" id="RoF-YR-a9X"/>
+                            <constraint firstItem="caB-zI-q0l" firstAttribute="bottom" secondItem="288-AQ-uCy" secondAttribute="bottom" constant="33.329999999999998" id="UFk-lt-RB6"/>
+                            <constraint firstItem="pNq-ix-BkO" firstAttribute="leading" secondItem="586-HY-u3M" secondAttribute="trailing" constant="77" id="WkX-0D-aMx"/>
                             <constraint firstItem="Flg-nc-yDf" firstAttribute="leading" secondItem="caB-zI-q0l" secondAttribute="leading" id="YhV-rA-tMU"/>
-                            <constraint firstItem="caB-zI-q0l" firstAttribute="trailing" secondItem="pNq-ix-BkO" secondAttribute="trailing" constant="31" id="c7g-ah-pvT"/>
-                            <constraint firstItem="7IT-PV-fyc" firstAttribute="trailing" secondItem="caB-zI-q0l" secondAttribute="trailing" id="eXE-H4-QIp"/>
-                            <constraint firstItem="caB-zI-q0l" firstAttribute="trailing" secondItem="eSP-ev-58H" secondAttribute="trailing" constant="10" id="iTk-9F-Juf"/>
-                            <constraint firstItem="eSP-ev-58H" firstAttribute="top" secondItem="7IT-PV-fyc" secondAttribute="bottom" constant="8" symbolic="YES" id="kIA-Xz-bvg"/>
+                            <constraint firstItem="288-AQ-uCy" firstAttribute="leading" secondItem="caB-zI-q0l" secondAttribute="leading" constant="33" id="a99-sL-g5g"/>
+                            <constraint firstItem="7IT-PV-fyc" firstAttribute="trailing" secondItem="caB-zI-q0l" secondAttribute="trailing" constant="-16" id="eXE-H4-QIp"/>
+                            <constraint firstItem="caB-zI-q0l" firstAttribute="trailing" secondItem="eSP-ev-58H" secondAttribute="trailing" id="iTk-9F-Juf"/>
+                            <constraint firstItem="eSP-ev-58H" firstAttribute="top" secondItem="7IT-PV-fyc" secondAttribute="bottom" constant="19.000000000000014" id="kIA-Xz-bvg"/>
+                            <constraint firstItem="caB-zI-q0l" firstAttribute="bottom" secondItem="586-HY-u3M" secondAttribute="bottom" constant="38" id="mCf-la-Iic"/>
+                            <constraint firstItem="caB-zI-q0l" firstAttribute="trailing" secondItem="pNq-ix-BkO" secondAttribute="trailing" constant="20.329999999999998" id="nxX-wz-Moy"/>
                             <constraint firstItem="7IT-PV-fyc" firstAttribute="top" secondItem="caB-zI-q0l" secondAttribute="top" constant="20" id="o8g-dp-ra1"/>
-                            <constraint firstItem="7IT-PV-fyc" firstAttribute="leading" secondItem="caB-zI-q0l" secondAttribute="leading" id="or6-IZ-v4S"/>
-                            <constraint firstItem="caB-zI-q0l" firstAttribute="bottom" secondItem="288-AQ-uCy" secondAttribute="bottom" constant="27" id="uHd-FJ-q7D"/>
-                            <constraint firstItem="caB-zI-q0l" firstAttribute="bottom" secondItem="pNq-ix-BkO" secondAttribute="bottom" constant="26" id="zbz-zU-YGA"/>
+                            <constraint firstItem="7IT-PV-fyc" firstAttribute="leading" secondItem="caB-zI-q0l" secondAttribute="leading" constant="16" id="or6-IZ-v4S"/>
                         </constraints>
                     </view>
                     <connections>
@@ -162,6 +179,7 @@
                         <outlet property="menuButton" destination="eSP-ev-58H" id="0Zh-pM-jCU"/>
                         <outlet property="nextButton" destination="pNq-ix-BkO" id="dFO-Rh-YoK"/>
                         <outlet property="previousButton" destination="288-AQ-uCy" id="vOx-ke-FcE"/>
+                        <outlet property="verifyButton" destination="586-HY-u3M" id="Sr4-XL-JvN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -170,14 +188,24 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left.circle" catalog="system" width="128" height="121"/>
-        <image name="arrow.right.circle" catalog="system" width="128" height="121"/>
+        <image name="arrow.left.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -18,6 +18,7 @@ class ViewController: UIViewController, ARSessionDelegate {
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var verifyButton: UIButton!
     @IBOutlet var arView: ARView!
     
     var notificationTrigger: RAM.NotificationTrigger!
@@ -54,17 +55,7 @@ class ViewController: UIViewController, ARSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // --- Hide Buttons ---
-        self.previousButton.isHidden = true
-        self.nextButton.isHidden = true
-        self.menuButton.isHidden = true
-        
-        
-        // --- PopUP View: Gives user 2 options ----
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let pop = Popup(frame: CGRect(), viewController: self)
-                    self.view.addSubview(pop)
-        }
+        self.verifyButton.isHidden = true
         
         arView.session.delegate = self
         rootLayer = arView.layer
@@ -72,15 +63,8 @@ class ViewController: UIViewController, ARSessionDelegate {
         let videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
         do {
             try  videoDevice!.lockForConfiguration()
-            let dimensions = CMVideoFormatDescriptionGetDimensions((videoDevice?.activeFormat.formatDescription)!)
-            print(dimensions)
-            print(arView.frame)
-//            bufferSize.width = CGFloat(dimensions.width)
-//            bufferSize.height = CGFloat(dimensions.height)
             bufferSize.width = CGFloat(arView.frame.width)
             bufferSize.height = CGFloat(arView.frame.height)
-//            bufferSize.width = 640.0
-//            bufferSize.height = 480.0
             videoDevice!.unlockForConfiguration()
         }
         catch {
@@ -107,6 +91,8 @@ class ViewController: UIViewController, ARSessionDelegate {
             print("Model loading went wrong: \(error)")
         }
         stateController = StateController()
+        self.statusViewController.showMessage("IDENTIFY PC PARTS")
+        self.menuButton.isHidden = false
         updateARView()
     }
     
@@ -120,7 +106,7 @@ class ViewController: UIViewController, ARSessionDelegate {
         self.detectionOverlay.position = CGPoint(x: self.rootLayer.bounds.midX,
                                                  y: self.rootLayer.bounds.midY)
         self.rootLayer.addSublayer(self.detectionOverlay)
-        self.detectionOverlay.isHidden = true
+//        self.detectionOverlay.isHidden = true
     }
     
     
@@ -139,20 +125,26 @@ class ViewController: UIViewController, ARSessionDelegate {
     }
     
     @IBAction func menuButton(_ sender: Any) {
-        // --- PopUP View: Gives user 2 options ----
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let pop = Popup(frame: CGRect(), viewController: self)
-                    self.view.addSubview(pop)
+        self.detectionOverlay.isHidden = !(self.detectionOverlay.isHidden)
+        
+        if self.detectionOverlay.isHidden == true {
+            let config = UIImage.SymbolConfiguration(hierarchicalColor: .secondaryLabel)
+            let image = UIImage(systemName: "magnifyingglass.circle.fill", withConfiguration: config)
+            self.menuButton.setImage(image, for: .normal)
         }
+        else {
+            let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemBlue)
+            let image = UIImage(systemName: "magnifyingglass.circle.fill", withConfiguration: config)
+            self.menuButton.setImage(image, for: .normal)
+        }
+
     }
     
     @IBAction func verifyStep(_ sender: Any) {
         // Show options for the source picker only if the camera is available.
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            //present(photoPicker, animated: false)
             return
         }
-
         present(cameraPicker, animated: false)
     }
     
@@ -163,10 +155,6 @@ class ViewController: UIViewController, ARSessionDelegate {
         }
         //STEP1: PLACE RAMS STICKS
         else if stateController.step == 1 {
-            // --- show Buttons ---
-            self.detectionOverlay.isHidden = true
-            self.previousButton.isHidden = false
-            self.nextButton.isHidden = false
             statusViewController.showMessage("POINT CAMERA TOWARDS MOTHEROARD")
         }
         else if stateController.step == 2 {
