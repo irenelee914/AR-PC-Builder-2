@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,13 +20,13 @@
                             <visualEffectView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-il-D8a" userLabel="Message Panel">
                                 <rect key="frame" x="18" y="52.000000000000007" width="378" height="30.333333333333336"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OyT-QW-rlJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="378" height="30.333333333333336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="378" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-0X-REd">
-                                            <rect key="frame" x="0.0" y="0.0" width="378" height="30.666666666666668"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="378" height="30"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8BA-Ae-Epm">
-                                                <rect key="frame" x="0.0" y="0.0" width="378" height="30.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="378" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIt-JV-75A">
@@ -95,7 +95,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="288-AQ-uCy">
-                                <rect key="frame" x="32" y="804" width="44" height="31"/>
+                                <rect key="frame" x="32" y="804" width="45.333333333333343" height="31"/>
                                 <state key="normal" title=""/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.left.circle" catalog="system"/>
                                 <connections>
@@ -103,7 +103,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNq-ix-BkO">
-                                <rect key="frame" x="339" y="805" width="44" height="31"/>
+                                <rect key="frame" x="337.66666666666669" y="805" width="45.333333333333314" height="31"/>
                                 <state key="normal" title=""/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.right.circle" catalog="system"/>
                                 <connections>
@@ -127,6 +127,15 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="menuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w68-EC-UgW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="586-HY-u3M">
+                                <rect key="frame" x="172" y="775" width="71" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="VERIFY"/>
+                                <connections>
+                                    <action selector="verifyStep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NEs-s0-3GT"/>
                                 </connections>
                             </button>
                         </subviews>

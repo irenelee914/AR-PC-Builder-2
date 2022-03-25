@@ -11,11 +11,15 @@ import ARKit
 import Vision
 
 class ViewController: UIViewController, ARSessionDelegate {
+    var firstRun = true
+    let predictionsToShow = 1
+    let imagePredictor = ImagePredictor()
     
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet var arView: ARView!
+    
     var notificationTrigger: RAM.NotificationTrigger!
     var stateController: StateController!
     var textInstructions:UILabel!
@@ -94,7 +98,6 @@ class ViewController: UIViewController, ARSessionDelegate {
                 DispatchQueue.main.async(execute: {
                     // perform all the UI updates on the main queue
                     if let results = request.results {
-//                        print(results)
                         self.drawVisionRequestResults(results)
                     }
                 })
@@ -103,8 +106,6 @@ class ViewController: UIViewController, ARSessionDelegate {
         } catch let error as NSError {
             print("Model loading went wrong: \(error)")
         }
-//        diceDetectionRequest.imageCropAndScaleOption = .scaleFill
-        
         stateController = StateController()
         updateARView()
     }
@@ -144,6 +145,17 @@ class ViewController: UIViewController, ARSessionDelegate {
                     self.view.addSubview(pop)
         }
     }
+    
+    @IBAction func verifyStep(_ sender: Any) {
+        // Show options for the source picker only if the camera is available.
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            //present(photoPicker, animated: false)
+            return
+        }
+
+        present(cameraPicker, animated: false)
+    }
+    
     
     func updateARView() -> Void {
         // main menu, view when popup is showed
@@ -456,3 +468,90 @@ extension ViewController {
         }
     }
 }
+
+extension ViewController {
+    // MARK: Main storyboard updates
+    /// Updates the storyboard's image view.
+    /// - Parameter image: An image.
+//    func updateImage(_ image: UIImage) {
+//        DispatchQueue.main.async {
+//            self.imageView.image = image
+//        }
+//    }
+
+    /// Updates the storyboard's prediction label.
+    /// - Parameter message: A prediction or message string.
+    /// - Tag: updatePredictionLabel
+    func updatePredictionLabel(_ message: String) {
+        DispatchQueue.main.async {
+            self.statusViewController.showMessage(message)
+        }
+
+        if firstRun {
+            DispatchQueue.main.async {
+                self.firstRun = false
+                //self.predictionLabel.superview?.isHidden = false
+                //self.startupPrompts.isHidden = true
+            }
+        }
+    }
+    /// Notifies the view controller when a user selects a photo in the camera picker or photo library picker.
+    /// - Parameter photo: A photo from the camera or photo library.
+    func userSelectedPhoto(_ photo: UIImage) {
+        //updateImage(photo)
+        //statusViewController.showMessage("Making predictions for the photo...")
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.classifyImage(photo)
+        }
+    }
+}
+
+extension ViewController {
+    // MARK: Image prediction methods
+    /// Sends a photo to the Image Predictor to get a prediction of its content.
+    /// - Parameter image: A photo.
+    private func classifyImage(_ image: UIImage) {
+        do {
+            try self.imagePredictor.makePredictions(for: image,
+                                                    completionHandler: imagePredictionHandler)
+        } catch {
+            statusViewController.showMessage("Vision was unable to make a prediction")
+        }
+    }
+
+    /// The method the Image Predictor calls when its image classifier model generates a prediction.
+    /// - Parameter predictions: An array of predictions.
+    /// - Tag: imagePredictionHandler
+    private func imagePredictionHandler(_ predictions: [ImagePredictor.Prediction]?) {
+        guard let predictions = predictions else {
+            statusViewController.showMessage("No predictions. (Check console log.)")
+            return
+        }
+
+        let formattedPredictions = formatPredictions(predictions)
+
+        let predictionString = formattedPredictions.joined(separator: "\n")
+        updatePredictionLabel(predictionString)
+    }
+
+    /// Converts a prediction's observations into human-readable strings.
+    /// - Parameter observations: The classification observations from a Vision request.
+    /// - Tag: formatPredictions
+    private func formatPredictions(_ predictions: [ImagePredictor.Prediction]) -> [String] {
+        // Vision sorts the classifications in descending confidence order.
+        let topPredictions: [String] = predictions.prefix(predictionsToShow).map { prediction in
+            var name = prediction.classification
+
+            // For classifications with more than one name, keep the one before the first comma.
+            if let firstComma = name.firstIndex(of: ",") {
+                name = String(name.prefix(upTo: firstComma))
+            }
+
+            return "\(name) - \(prediction.confidencePercentage)%"
+        }
+
+        return topPredictions
+    }
+}
+

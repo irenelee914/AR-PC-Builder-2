@@ -14,6 +14,11 @@
 		CB30F8B6273239D500039A71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB30F8B4273239D500039A71 /* LaunchScreen.storyboard */; };
 		CB30F8C1273239D500039A71 /* PC_BuildingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F8C0273239D500039A71 /* PC_BuildingTests.swift */; };
 		CB30F8CC273239D500039A71 /* PC_BuildingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F8CB273239D500039A71 /* PC_BuildingUITests.swift */; };
+		CB30FDCB27DE96BB00AC4D67 /* ViewController+CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FDCA27DE96BB00AC4D67 /* ViewController+CameraPicker.swift */; };
+		CB30FDCD27DE97B500AC4D67 /* ImagePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FDCC27DE97B500AC4D67 /* ImagePredictor.swift */; };
+		CB30FDCF27DE97FD00AC4D67 /* StateVerifierRAM2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB30FDCE27DE97FD00AC4D67 /* StateVerifierRAM2.mlmodel */; };
+		CB30FDD127DE987F00AC4D67 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FDD027DE987F00AC4D67 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
+		CB30FDD327DE989400AC4D67 /* VNClassificationObservation+confidenceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FDD227DE989400AC4D67 /* VNClassificationObservation+confidenceString.swift */; };
 		CB82186627586AD300BD7C0C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82186527586AD300BD7C0C /* Popup.swift */; };
 		CB8B10DE278CFF3E006B6860 /* ObjectDetector496.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB8B10DD278CFF3E006B6860 /* ObjectDetector496.mlmodel */; };
 		CB8B10E4278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB8B10E3278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel */; };
@@ -53,6 +58,11 @@
 		CB30F8C7273239D500039A71 /* PC BuildingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PC BuildingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB30F8CB273239D500039A71 /* PC_BuildingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_BuildingUITests.swift; sourceTree = "<group>"; };
 		CB30F8CD273239D500039A71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB30FDCA27DE96BB00AC4D67 /* ViewController+CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CameraPicker.swift"; sourceTree = "<group>"; };
+		CB30FDCC27DE97B500AC4D67 /* ImagePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictor.swift; sourceTree = "<group>"; };
+		CB30FDCE27DE97FD00AC4D67 /* StateVerifierRAM2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StateVerifierRAM2.mlmodel; sourceTree = "<group>"; };
+		CB30FDD027DE987F00AC4D67 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
+		CB30FDD227DE989400AC4D67 /* VNClassificationObservation+confidenceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+confidenceString.swift"; sourceTree = "<group>"; };
 		CB82186527586AD300BD7C0C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		CB8B10DD278CFF3E006B6860 /* ObjectDetector496.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ObjectDetector496.mlmodel; sourceTree = "<group>"; };
 		CB8B10E3278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ObjectDetectorBreakfast.mlmodel; sourceTree = "<group>"; };
@@ -110,17 +120,22 @@
 			isa = PBXGroup;
 			children = (
 				CB30F8A9273239CE00039A71 /* AppDelegate.swift */,
+				CB30FDD027DE987F00AC4D67 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+				CB30FDCC27DE97B500AC4D67 /* ImagePredictor.swift */,
 				CB30F8AB273239CE00039A71 /* ViewController.swift */,
 				CBBB59F9278A7644002A5CF6 /* InstructionsViewController.swift */,
+				CB30FDCA27DE96BB00AC4D67 /* ViewController+CameraPicker.swift */,
 				CBC54F8627C6F0CD00F6B7EC /* RAM.rcproject */,
 				CB30F8AF273239CE00039A71 /* Main.storyboard */,
 				CB82186527586AD300BD7C0C /* Popup.swift */,
 				CB30F8B2273239D500039A71 /* Assets.xcassets */,
+				CB30FDCE27DE97FD00AC4D67 /* StateVerifierRAM2.mlmodel */,
 				CB8B10DD278CFF3E006B6860 /* ObjectDetector496.mlmodel */,
 				CB8B10E3278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel */,
 				CB8B10E9278D057F006B6860 /* FullNetwork.mlmodel */,
 				CB30F8B4273239D500039A71 /* LaunchScreen.storyboard */,
 				CB30F8B7273239D500039A71 /* Info.plist */,
+				CB30FDD227DE989400AC4D67 /* VNClassificationObservation+confidenceString.swift */,
 			);
 			path = "PC Building";
 			sourceTree = "<group>";
@@ -275,9 +290,14 @@
 			files = (
 				CB8B10EA278D0580006B6860 /* FullNetwork.mlmodel in Sources */,
 				CB30F8AC273239CE00039A71 /* ViewController.swift in Sources */,
+				CB30FDCF27DE97FD00AC4D67 /* StateVerifierRAM2.mlmodel in Sources */,
+				CB30FDD327DE989400AC4D67 /* VNClassificationObservation+confidenceString.swift in Sources */,
 				CB8B10E4278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel in Sources */,
+				CB30FDD127DE987F00AC4D67 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				CB30F8AA273239CE00039A71 /* AppDelegate.swift in Sources */,
+				CB30FDCD27DE97B500AC4D67 /* ImagePredictor.swift in Sources */,
 				CB82186627586AD300BD7C0C /* Popup.swift in Sources */,
+				CB30FDCB27DE96BB00AC4D67 /* ViewController+CameraPicker.swift in Sources */,
 				CB8B10DE278CFF3E006B6860 /* ObjectDetector496.mlmodel in Sources */,
 				CBBB59FA278A7644002A5CF6 /* InstructionsViewController.swift in Sources */,
 				CBC54F8727C6F0CD00F6B7EC /* RAM.rcproject in Sources */,
