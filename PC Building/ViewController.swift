@@ -21,6 +21,8 @@ class ViewController: UIViewController, ARSessionDelegate {
     @IBOutlet weak var verifyButton: UIButton!
     @IBOutlet var arView: ARView!
     
+    let coachingOverlay = ARCoachingOverlayView()
+    
     var notificationTrigger: RAM.NotificationTrigger!
     var stateController: StateController!
     var textInstructions:UILabel!
@@ -59,6 +61,9 @@ class ViewController: UIViewController, ARSessionDelegate {
         
         arView.session.delegate = self
         rootLayer = arView.layer
+        
+        // Set up coaching overlay.
+        setupCoachingOverlay()
         
         let videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
         do {
@@ -106,7 +111,6 @@ class ViewController: UIViewController, ARSessionDelegate {
         self.detectionOverlay.position = CGPoint(x: self.rootLayer.bounds.midX,
                                                  y: self.rootLayer.bounds.midY)
         self.rootLayer.addSublayer(self.detectionOverlay)
-//        self.detectionOverlay.isHidden = true
     }
     
     
@@ -186,6 +190,8 @@ class ViewController: UIViewController, ARSessionDelegate {
             anchor.generateCollisionShapes(recursive: true)
             arView.scene.anchors.append(anchor)
             statusViewController.showMessage("Insert the RAMs into the RAM slots".uppercased())
+            self.verifyButton.isHidden = false
+
         }
         //STEP 2: PLACE CPU
         else if stateController.step == 6 {
