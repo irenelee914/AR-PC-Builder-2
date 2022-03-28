@@ -17,21 +17,27 @@ import UIKit
 /// - Converts the prediction results in a completion handler
 /// - Updates the delegate's `predictions` property
 /// - Tag: ImagePredictor
+///
+
+enum HardwareType {
+    case ram
+    case motherboard
+    case harddrive
+    case cpu
+    case cpu_fan
+}
+
 class ImagePredictor {
+    
+    init (stateVerifierType: HardwareType) {
+        self.imageClassifier = ImagePredictor.createImageClassifier(stateVerifierType: stateVerifierType)
+    }
+    
     /// - Tag: name
-    static func createImageClassifier() -> VNCoreMLModel {
-        // Use a default model configuration.
-        let defaultConfig = MLModelConfiguration()
-
-        // Create an instance of the image classifier's wrapper class.
-        let imageClassifierWrapper = try? StateVerifierRAM_2(configuration: defaultConfig)
-
-        guard let imageClassifier = imageClassifierWrapper else {
-            fatalError("App failed to create an image classifier model instance.")
-        }
+    static func createImageClassifier(stateVerifierType: HardwareType) -> VNCoreMLModel {
 
         // Get the underlying model instance.
-        let imageClassifierModel = imageClassifier.model
+        let imageClassifierModel = getStateVerifierModel(stateVerifierType: stateVerifierType)
 
         // Create a Vision instance using the image classifier's model instance.
         guard let imageClassifierVisionModel = try? VNCoreMLModel(for: imageClassifierModel) else {
@@ -40,12 +46,54 @@ class ImagePredictor {
 
         return imageClassifierVisionModel
     }
+    
+    static func getStateVerifierModel(stateVerifierType:HardwareType) -> MLModel {
+        // Use a default model configuration.
+        let defaultConfig = MLModelConfiguration()
+        
+        switch stateVerifierType {
+        case .ram :
+            let imageClassifierWrapper = try? StateVerifierRAM_2(configuration: defaultConfig)
+            guard let imageClassifier = imageClassifierWrapper else {
+                fatalError("App failed to create an image classifier model instance.")
+            }
+            return imageClassifier.model
+        case .motherboard :
+            let imageClassifierWrapper = try? StateVerifierMOBO(configuration: defaultConfig)
+            guard let imageClassifier = imageClassifierWrapper else {
+                fatalError("App failed to create an image classifier model instance.")
+            }
+            return imageClassifier.model
+        case .harddrive :
+            print("App doens't have hard drive verifier yet")
+            //imageClassifierWrapper = try? StateVerifierRAM_2(configuration: defaultConfig)
+        case .cpu :
+            let imageClassifierWrapper = try? StateVerifierCPU(configuration: defaultConfig)
+            guard let imageClassifier = imageClassifierWrapper else {
+                fatalError("App failed to create an image classifier model instance.")
+            }
+            return imageClassifier.model
+        case .cpu_fan:
+            let imageClassifierWrapper = try? StateVerifierCPUFAN(configuration: defaultConfig)
+            guard let imageClassifier = imageClassifierWrapper else {
+                fatalError("App failed to create an image classifier model instance.")
+            }
+            return imageClassifier.model
+        default:
+            fatalError("App failed to create an image classifier model instance.")
+        }
+        let imageClassifierWrapper = try? StateVerifierRAM_2(configuration: defaultConfig)
+        guard let imageClassifier = imageClassifierWrapper else {
+            fatalError("App failed to create an image classifier model instance.")
+        }
+        return imageClassifier.model
+    }
 
     /// A common image classifier instance that all Image Predictor instances use to generate predictions.
     ///
     /// Share one ``VNCoreMLModel`` instance --- for each Core ML model file --- across the app,
     /// since each can be expensive in time and resources.
-    private static let imageClassifier = createImageClassifier()
+    private var imageClassifier:VNCoreMLModel
 
     /// Stores a classification name and confidence for an image classifier's prediction.
     /// - Tag: Prediction
@@ -69,7 +117,7 @@ class ImagePredictor {
     private func createImageClassificationRequest() -> VNImageBasedRequest {
         // Create an image classification request with an image classifier model.
 
-        let imageClassificationRequest = VNCoreMLRequest(model: ImagePredictor.imageClassifier,
+        let imageClassificationRequest = VNCoreMLRequest(model: self.imageClassifier,
                                                          completionHandler: visionRequestHandler)
 
         imageClassificationRequest.imageCropAndScaleOption = .centerCrop

@@ -11,23 +11,23 @@ class Popup: UIView {
     
     var viewController:ViewController
     
-    fileprivate let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = PaddingLabel(withInsets: 0, 8, 18, 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.contentMode = .scaleToFill
         label.numberOfLines = 0
-        label.text = "Welcome, to the PC Builder App!"
+        label.text = "Success"
         label.textAlignment = .center
         return label
     }()
     
     
-    fileprivate let subtitleLabel: UILabel = {
+    let subtitleLabel: UILabel = {
         let label = PaddingLabel(withInsets: 0, 8, 18, 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.text = "How would you like to get started?"
+        label.text = "Are you ready to move on to the next step?"
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -41,47 +41,22 @@ class Popup: UIView {
         return v
     }()
     
-    fileprivate let identifyPCPartsButton: UIButton = {
+    let identifyPCPartsButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.clear.cgColor
-        button.setTitle("Identify PC Parts", for: .normal)
+        button.setTitle("Yes", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(identifyPCPartsButtonClicked), for: .touchUpInside)
         return button
     }()
+
     
-    fileprivate let startPCBuildingButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 15))
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.clear.cgColor
-        button.setTitle("Start Building PC", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(startPCBuildingButtonClicked), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc func startPCBuildingButtonClicked() {
-        print("startPCBuildingButtonClicked")
-        animateOut()
-        self.viewController.detectionOverlay.isHidden = true
-        self.viewController.menuButton.isHidden = true
-        self.viewController.previousButton.isHidden = false
-        self.viewController.nextButton.isHidden = false
-        self.viewController.stateController.step = 1
-        self.viewController.updateARView()
-    }
     
     @objc func identifyPCPartsButtonClicked() {
-        print("identifyPCPartsButtonClicked")
         animateOut()
-        self.viewController.detectionOverlay.isHidden = false
-        self.viewController.statusViewController.showMessage("IDENTIFY PC PARTS")
-        self.viewController.menuButton.isHidden = false
     }
     
     fileprivate lazy var identifyPCPartsButtonStack: UIStackView = {
@@ -94,19 +69,9 @@ class Popup: UIView {
         return stack
     }()
     
-    fileprivate lazy var startPCBuildingButtonStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [startPCBuildingButton])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.spacing = UIStackView.spacingUseSystem
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 10)
-        return stack
-    }()
-    
     
     fileprivate lazy var stack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, identifyPCPartsButtonStack, startPCBuildingButtonStack])
+        let stack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, identifyPCPartsButtonStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         return stack
