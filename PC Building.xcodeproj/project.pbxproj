@@ -24,6 +24,7 @@
 		CB78AC0227F23590003B9BB6 /* StateVerifierCPUFAN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB78ABFE27F23590003B9BB6 /* StateVerifierCPUFAN.mlmodel */; };
 		CB78AC0327F23590003B9BB6 /* StateVerifierHardDrive.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB78ABFF27F23590003B9BB6 /* StateVerifierHardDrive.mlmodel */; };
 		CB78AC0527F235B7003B9BB6 /* Random_access_memory_RAM_DDR3scn.scn in Resources */ = {isa = PBXBuildFile; fileRef = CB78AC0427F235B7003B9BB6 /* Random_access_memory_RAM_DDR3scn.scn */; };
+		CB78AC0727F23AD2003B9BB6 /* StateVerifierCPU.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB78AC0627F23AD2003B9BB6 /* StateVerifierCPU.mlmodel */; };
 		CB82186627586AD300BD7C0C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82186527586AD300BD7C0C /* Popup.swift */; };
 		CB8B10DE278CFF3E006B6860 /* ObjectDetector496.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB8B10DD278CFF3E006B6860 /* ObjectDetector496.mlmodel */; };
 		CB8B10E4278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB8B10E3278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel */; };
@@ -78,6 +79,7 @@
 		CB78ABFE27F23590003B9BB6 /* StateVerifierCPUFAN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StateVerifierCPUFAN.mlmodel; sourceTree = "<group>"; };
 		CB78ABFF27F23590003B9BB6 /* StateVerifierHardDrive.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StateVerifierHardDrive.mlmodel; sourceTree = "<group>"; };
 		CB78AC0427F235B7003B9BB6 /* Random_access_memory_RAM_DDR3scn.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Random_access_memory_RAM_DDR3scn.scn; sourceTree = "<group>"; };
+		CB78AC0627F23AD2003B9BB6 /* StateVerifierCPU.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StateVerifierCPU.mlmodel; sourceTree = "<group>"; };
 		CB82186527586AD300BD7C0C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		CB8B10DD278CFF3E006B6860 /* ObjectDetector496.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ObjectDetector496.mlmodel; sourceTree = "<group>"; };
 		CB8B10E3278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ObjectDetectorBreakfast.mlmodel; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				CB78ABFE27F23590003B9BB6 /* StateVerifierCPUFAN.mlmodel */,
 				CB78ABFF27F23590003B9BB6 /* StateVerifierHardDrive.mlmodel */,
 				CB78ABFD27F23590003B9BB6 /* StateVerifierMOBO.mlmodel */,
+				CB78AC0627F23AD2003B9BB6 /* StateVerifierCPU.mlmodel */,
 				CB78ABFC27F23590003B9BB6 /* StateVerifierRAM 2.mlmodel */,
 				CB8B10DD278CFF3E006B6860 /* ObjectDetector496.mlmodel */,
 				CB8B10E3278D00F2006B6860 /* ObjectDetectorBreakfast.mlmodel */,
@@ -331,6 +334,7 @@
 				CBE2BA4527EFD56600F27BDF /* DoublyLinkedList.swift in Sources */,
 				CB30F8AA273239CE00039A71 /* AppDelegate.swift in Sources */,
 				CBE2BA5627EFE5E400F27BDF /* InstructionMilestoneView.swift in Sources */,
+				CB78AC0727F23AD2003B9BB6 /* StateVerifierCPU.mlmodel in Sources */,
 				CB78AC0327F23590003B9BB6 /* StateVerifierHardDrive.mlmodel in Sources */,
 				CB30FDCD27DE97B500AC4D67 /* ImagePredictor.swift in Sources */,
 				CB82186627586AD300BD7C0C /* Popup.swift in Sources */,
