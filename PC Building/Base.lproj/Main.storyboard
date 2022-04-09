@@ -24,9 +24,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-0X-REd">
-                                            <rect key="frame" x="0.0" y="0.0" width="346" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="346" height="30.666666666666668"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8BA-Ae-Epm">
-                                                <rect key="frame" x="0.0" y="0.0" width="346" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="346" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIt-JV-75A">
@@ -289,6 +289,7 @@
                     </visualEffectView>
                     <connections>
                         <outlet property="InstructionsLabel" destination="Gfm-Hk-8Po" id="g5x-rP-sgm"/>
+                        <outlet property="button" destination="mkF-Gp-vdE" id="MB2-gh-cI0"/>
                         <outlet property="instructionDetail" destination="oHa-cs-eCY" id="6z6-sh-5Hy"/>
                         <outlet property="instructionsLabel" destination="Gfm-Hk-8Po" id="YMu-x4-YK0"/>
                         <outlet property="milestoneView" destination="RmN-BK-mEJ" id="iLi-9z-DA0"/>

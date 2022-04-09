@@ -93,5 +93,15 @@
     "libraryIdentifier" : "744d84cab45ef3067bfb74c0f4aa2146",
     "format" : "model",
     "displayName" : "thick_cpu_lever_object.usdz"
+  },
+  {
+    "libraryIdentifier" : "c70e3d87ebb2d93c7fbf83d682de8e93",
+    "format" : "image",
+    "displayName" : "274656056_5397124396964749_1843943403802441367_n.jpeg"
+  },
+  {
+    "libraryIdentifier" : "b1431f401527672deb43bc76ba6638e5",
+    "format" : "model",
+    "displayName" : "hard_drive.usdz"
   }
 ]

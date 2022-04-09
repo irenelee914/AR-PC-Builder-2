@@ -14,6 +14,7 @@ class InstructionMilestoneView: UIViewController {
  
     @IBOutlet var milestoneView: UIVisualEffectView!
     @IBOutlet weak var sceneView: SCNView!
+    @IBOutlet weak var button: UIButton!
     
     @IBOutlet weak var stepLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
@@ -54,6 +55,10 @@ class InstructionMilestoneView: UIViewController {
     
     func hideMilestoneView(){
         self.milestoneView?.isHidden = true
+    }
+    
+    func hideButton(){
+        self.button?.isHidden = true
     }
     
     func showMilestoneView(){

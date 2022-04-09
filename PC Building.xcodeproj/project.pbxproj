@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB29EF7B28020CFD00074681 /* hard_drive.scn in Resources */ = {isa = PBXBuildFile; fileRef = CB29EF7A28020CFD00074681 /* hard_drive.scn */; };
+		CB29EF812802108B00074681 /* Server_CPU.scn in Resources */ = {isa = PBXBuildFile; fileRef = CB29EF802802108B00074681 /* Server_CPU.scn */; };
 		CB30F8AA273239CE00039A71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F8A9273239CE00039A71 /* AppDelegate.swift */; };
 		CB30F8AC273239CE00039A71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30F8AB273239CE00039A71 /* ViewController.swift */; };
 		CB30F8B1273239CE00039A71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB30F8AF273239CE00039A71 /* Main.storyboard */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB29EF7A28020CFD00074681 /* hard_drive.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = hard_drive.scn; sourceTree = "<group>"; };
+		CB29EF802802108B00074681 /* Server_CPU.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Server_CPU.scn; sourceTree = "<group>"; };
 		CB30F8A6273239CE00039A71 /* PC Building.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PC Building.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB30F8A9273239CE00039A71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB30F8AB273239CE00039A71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				CB78AC0427F235B7003B9BB6 /* Random_access_memory_RAM_DDR3scn.scn */,
 				CBE2BA7F27F0226700F27BDF /* i5_CPUscn.scn */,
 				CBE2BA8327F024BD00F27BDF /* cpu_fan_scn.scn */,
+				CB29EF802802108B00074681 /* Server_CPU.scn */,
+				CB29EF7A28020CFD00074681 /* hard_drive.scn */,
 				CBE2BA8927F0264F00F27BDF /* motherboard_scn.scn */,
 				CB30F8B4273239D500039A71 /* LaunchScreen.storyboard */,
 				CB30F8B7273239D500039A71 /* Info.plist */,
@@ -295,9 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE2BA8027F0226700F27BDF /* i5_CPUscn.scn in Resources */,
+				CB29EF812802108B00074681 /* Server_CPU.scn in Resources */,
 				CB78AC0527F235B7003B9BB6 /* Random_access_memory_RAM_DDR3scn.scn in Resources */,
 				CB30F8B6273239D500039A71 /* LaunchScreen.storyboard in Resources */,
 				CB30F8B3273239D500039A71 /* Assets.xcassets in Resources */,
+				CB29EF7B28020CFD00074681 /* hard_drive.scn in Resources */,
 				CBE2BA8427F024BD00F27BDF /* cpu_fan_scn.scn in Resources */,
 				CB30F8B1273239CE00039A71 /* Main.storyboard in Resources */,
 				CBE2BA8A27F0264F00F27BDF /* motherboard_scn.scn in Resources */,

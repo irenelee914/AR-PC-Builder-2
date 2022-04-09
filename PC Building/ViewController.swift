@@ -97,19 +97,18 @@ class ViewController: UIViewController, ARSessionDelegate {
                     // perform all the UI updates on the main queue
                     if let results = request.results {
                         self.drawVisionRequestResults(results)
+    
                     }
                 })
             })
             self.requests = [objectRecognition]
-        } catch let error as NSError {
-            print("Model loading went wrong: \(error)")
+        } catch{
+            DispatchQueue.main.async(execute: {
+                print("Model loading went wrong: \(error)")
+            })
         }
-        self.statusViewController.showMessage("IDENTIFY PC PARTS")
-        self.menuButton.isHidden = false
-        self.popupView = Popup(frame: CGRect(), viewController: self)
-        
-        self.instructionsDLL = createInstructionsDoublyLinkedList()
-        updateARView()
+        self.instructionsDLL = self.createInstructionsDoublyLinkedList()
+        self.updateARView()
     }
     
     func setupLayers() {
@@ -329,7 +328,9 @@ extension ViewController {
             //
         }
         else {
+            DispatchQueue.main.async {
                 self.nextButton.isEnabled = true
+            }
         }
         
     }
@@ -400,12 +401,19 @@ extension ViewController {
         //STEP 1.0: Place RAM Sticks
         instructions.append {
             self.statusViewController.showMessage("POINT CAMERA TOWARDS MOTHEROARD")
+            self.previousButton.isEnabled = false
+            self.arView.scene.anchors.removeAll()
 
         }
         //STEP 1.1: Depress RAM Levers
         instructions.append {
-            self.instructionsMilestoneViewController.showMilestoneView()
+            self.previousButton.isEnabled = true
+            
+            self.instructionsMilestoneViewController.changeScene(sceneName: "Random_access_memory_RAM_DDR3scn.scn")
+            self.instructionsMilestoneViewController.changeLabel(stepLabel: "STEP 1", instructionLabel: "PLACE RAM STICKS")
             self.instructionsMilestoneViewController.instructionDetail.text = "RAM gives applications a place to store and access data on a short-term basis. It stores the information your computer is actively using so that it can be accessed quickly."
+            self.instructionsMilestoneViewController.showMilestoneView()
+
 
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadRAM1()
@@ -416,8 +424,6 @@ extension ViewController {
         }
         //STEP 1.2: Locate Short side of the RAM
         instructions.append {
-            self.instructionsMilestoneViewController.changeScene(sceneName: "i5_CPUscn.scn")
-
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadRAM2SHORTSIDE()
             anchor.generateCollisionShapes(recursive: true)
@@ -445,6 +451,7 @@ extension ViewController {
             self.nextButton.isEnabled = false
         }
         instructions.append {
+            self.instructionsMilestoneViewController.changeScene(sceneName: "i5_CPUscn.scn")
             self.instructionsMilestoneViewController.changeLabel(stepLabel: "STEP 2", instructionLabel: "PLACE CPU")
             self.instructionsMilestoneViewController.instructionDetail.text = "The Core Processing Unit (CPU) is often called the brains of the computer. It is one of several processing units but is arguably the most essential. The CPU performs calculations, actions, and runs programs."
             self.instructionsMilestoneViewController.showMilestoneView()
@@ -457,9 +464,9 @@ extension ViewController {
             self.statusViewController.showMessage("1. Open the CPU Cover".uppercased())
             
             self.verifyButton.isHidden = true
+            self.nextButton.isEnabled = true
         }
         instructions.append {
-            self.instructionsMilestoneViewController.changeScene(sceneName: "cpu_fan_scn.scn")
             //step 3, insert CPU
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadCPU()
@@ -467,8 +474,8 @@ extension ViewController {
             self.arView.scene.anchors.append(anchor)
             self.statusViewController.showMessage("2. Place the CPU into the Socket".uppercased())
             
-            self.verifyButton.isHidden = true
-            self.nextButton.isEnabled = true
+            self.verifyButton.isHidden = false
+            self.nextButton.isEnabled = false
         }
         instructions.append {
             self.arView.scene.anchors.removeAll()
@@ -477,15 +484,15 @@ extension ViewController {
             self.arView.scene.anchors.append(anchor)
             self.statusViewController.showMessage("3. Close the CPU Cover".uppercased())
             
-            self.verifyButton.isHidden = false
-            self.nextButton.isEnabled = false
+            self.verifyButton.isHidden = true
+            self.nextButton.isEnabled = true
         }
         instructions.append {
+            self.instructionsMilestoneViewController.changeScene(sceneName: "cpu_fan_scn.scn")
             self.instructionsMilestoneViewController.changeLabel(stepLabel: "STEP 3", instructionLabel: "PLACE CPU FAN")
             self.instructionsMilestoneViewController.instructionDetail.text = "The more demand placed on a CPU, the harder it works, and the warmer it gets. If the CPU gets too warm it can make errors and eventually ‘melt’ becoming completely inoperable. A CPU fan works in conjunction with a heat sink to prevent this."
             
             self.instructionsMilestoneViewController.showMilestoneView()
-            self.imagePredictor = ImagePredictor(stateVerifierType: .cpu_fan)
             
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadCPUFAN1ORIENTATION1()
@@ -497,7 +504,6 @@ extension ViewController {
             self.nextButton.isEnabled = true
         }
         instructions.append {
-            self.instructionsMilestoneViewController.changeScene(sceneName: "motherboard_scn.scn")
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadCPUFAN()
             anchor.generateCollisionShapes(recursive: true)
@@ -529,6 +535,7 @@ extension ViewController {
             self.nextButton.isEnabled = true
         }
         instructions.append {
+            self.imagePredictor = ImagePredictor(stateVerifierType: .cpu_fan)
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadCPUFANSCREW4()
             anchor.generateCollisionShapes(recursive: true)
@@ -539,6 +546,7 @@ extension ViewController {
             self.nextButton.isEnabled = false
         }
         instructions.append {
+            self.instructionsMilestoneViewController.changeScene(sceneName: "motherboard_scn.scn")
             self.instructionsMilestoneViewController.changeLabel(stepLabel: "STEP 4", instructionLabel: "PLACE MOTHERBOARD")
             self.instructionsMilestoneViewController.instructionDetail.text = "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact."
             self.instructionsMilestoneViewController.showMilestoneView()
@@ -602,8 +610,6 @@ extension ViewController {
             self.arView.scene.anchors.append(anchor)
             self.statusViewController.showMessage("8. Place screw 7 into hole of motherboard".uppercased())
             
-            self.verifyButton.isHidden = true
-            self.nextButton.isEnabled = true
         }
         instructions.append {
             self.arView.scene.anchors.removeAll()
@@ -614,6 +620,31 @@ extension ViewController {
             
             self.verifyButton.isHidden = false
             self.nextButton.isEnabled = false
+        }
+        instructions.append {
+            self.instructionsMilestoneViewController.changeScene(sceneName: "hard_drive.scn")
+            self.instructionsMilestoneViewController.changeLabel(stepLabel: "STEP 5", instructionLabel: "PLACE HARD DRIVE")
+            self.instructionsMilestoneViewController.instructionDetail.text = "Hard drives are the central storage device for data on your computer. On it rests the documents you create, the music you listen to, the games you play and the video you view. You'll want to choose a drive which is optimized for your primary purpose."
+            self.instructionsMilestoneViewController.showMilestoneView()
+            self.imagePredictor = ImagePredictor(stateVerifierType: .harddrive)
+            
+            self.arView.scene.anchors.removeAll()
+            let anchor = try! RAM.loadHarddrive()
+            anchor.generateCollisionShapes(recursive: true)
+            self.arView.scene.anchors.append(anchor)
+            self.statusViewController.showMessage("1. Place Hard Drive into case".uppercased())
+            
+            self.verifyButton.isHidden = true
+            self.nextButton.isEnabled = true
+        }
+        instructions.append {
+            self.instructionsMilestoneViewController.changeScene(sceneName: "Server_CPU.scn")
+            self.instructionsMilestoneViewController.changeLabel(stepLabel: "WOW!", instructionLabel: "CONGRATULATIONS")
+            self.instructionsMilestoneViewController.instructionDetail.text = "You have successfully assembled the PC, I hope you had a wonderful journey! Would you like to restart?"
+            self.instructionsMilestoneViewController.showMilestoneView()
+            ///
+            self.stateStep = 0
+            self.updateARView()
         }
         return instructions
     }
