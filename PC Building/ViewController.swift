@@ -438,6 +438,7 @@ extension ViewController {
             self.statusViewController.showMessage("3. Align the ram as shown".uppercased())
             
             self.verifyButton.isHidden = true
+            self.nextButton.isEnabled = true
         }
         instructions.append {
             self.imagePredictor = ImagePredictor(stateVerifierType: .ram)
@@ -550,7 +551,6 @@ extension ViewController {
             self.instructionsMilestoneViewController.changeLabel(stepLabel: "STEP 4", instructionLabel: "PLACE MOTHERBOARD")
             self.instructionsMilestoneViewController.instructionDetail.text = "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact."
             self.instructionsMilestoneViewController.showMilestoneView()
-            self.imagePredictor = ImagePredictor(stateVerifierType: .motherboard)
             
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadPCCASEMOTHERBOARD()
@@ -610,8 +610,11 @@ extension ViewController {
             self.arView.scene.anchors.append(anchor)
             self.statusViewController.showMessage("8. Place screw 7 into hole of motherboard".uppercased())
             
+            self.verifyButton.isHidden = true
+            self.nextButton.isEnabled = true
         }
         instructions.append {
+            self.imagePredictor = ImagePredictor(stateVerifierType: .motherboard)
             self.arView.scene.anchors.removeAll()
             let anchor = try! RAM.loadMBSCREW8()
             anchor.generateCollisionShapes(recursive: true)
@@ -634,10 +637,13 @@ extension ViewController {
             self.arView.scene.anchors.append(anchor)
             self.statusViewController.showMessage("1. Place Hard Drive into case".uppercased())
             
-            self.verifyButton.isHidden = true
-            self.nextButton.isEnabled = true
+            self.verifyButton.isHidden = false
+            self.nextButton.isEnabled = false
         }
         instructions.append {
+            self.verifyButton.isHidden = true
+            self.nextButton.isEnabled = true
+            
             self.instructionsMilestoneViewController.changeScene(sceneName: "Server_CPU.scn")
             self.instructionsMilestoneViewController.changeLabel(stepLabel: "WOW!", instructionLabel: "CONGRATULATIONS")
             self.instructionsMilestoneViewController.instructionDetail.text = "You have successfully assembled the PC, I hope you had a wonderful journey! Would you like to restart?"

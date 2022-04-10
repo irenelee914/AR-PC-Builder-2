@@ -65,8 +65,11 @@ class ImagePredictor {
             }
             return imageClassifier.model
         case .harddrive :
-            print("App doens't have hard drive verifier yet")
-            //imageClassifierWrapper = try? StateVerifierRAM_2(configuration: defaultConfig)
+            let imageClassifierWrapper = try? StateVerifierHardDrive(configuration: defaultConfig)
+            guard let imageClassifier = imageClassifierWrapper else {
+                fatalError("App failed to create an image classifier model instance.")
+            }
+            return imageClassifier.model
         case .cpu :
             let imageClassifierWrapper = try? StateVerifierCPU(configuration: defaultConfig)
             guard let imageClassifier = imageClassifierWrapper else {
