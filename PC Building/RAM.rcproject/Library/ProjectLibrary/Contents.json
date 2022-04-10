@@ -103,5 +103,30 @@
     "libraryIdentifier" : "b1431f401527672deb43bc76ba6638e5",
     "format" : "model",
     "displayName" : "hard_drive.usdz"
+  },
+  {
+    "libraryIdentifier" : "026bcfbabedf4f4aca601a2c62a8113b",
+    "format" : "image",
+    "displayName" : "IMG_7206.heic"
+  },
+  {
+    "libraryIdentifier" : "a49a9bf91429e959a20f8b35ce544107",
+    "format" : "image",
+    "displayName" : "IMG_7208.heic"
+  },
+  {
+    "libraryIdentifier" : "dbaf14abb6c19b6dc28db36552939264",
+    "format" : "image",
+    "displayName" : "IMG_7208.heic"
+  },
+  {
+    "libraryIdentifier" : "69237ad67df2ba8092f7e6a7dccef8a4",
+    "format" : "image",
+    "displayName" : "IMG_7206.heic"
+  },
+  {
+    "libraryIdentifier" : "a013f95fa1e046606ac56c14b2f96412",
+    "format" : "image",
+    "displayName" : "IMG_7213.heic"
   }
 ]
